@@ -17,7 +17,7 @@ class _OnboardingState extends State<Onboarding> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Top Image - fits half screen
-            Container(
+            SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.6,
               child: Image.asset("images/mobile.png", fit: BoxFit.cover),

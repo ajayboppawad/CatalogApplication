@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                   "see all",
                   style: TextStyle(
                     color: Color(0xFFfd6f3e),
-                    fontSize: 18.0,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
             Row(
               children: [
                 Container(
-                  height: 140,
+                  height: 150,
                   padding: EdgeInsets.all(20),
                   margin: EdgeInsets.only(right: 20),
 
@@ -105,7 +105,7 @@ class _HomeState extends State<Home> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
-                    height: 140,
+                    height: 150,
                     child: ListView.builder(
                       padding: EdgeInsets.zero,
                       itemCount: categories.length,
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
               ],
             ),
             SizedBox(height: 20),
-            Container(
+            SizedBox(
               height: 220,
               child: ListView(
                 shrinkWrap: true,
@@ -168,13 +168,58 @@ class _HomeState extends State<Home> {
                               "\$100",
                               style: TextStyle(
                                 color: Color(0xFFfd6f3e),
-                                fontSize: 20.0,
+                                fontSize: 18.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(width: 50),
+                            SizedBox(width: 70),
                             Container(
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                color: Color(0xFFfd6f3e),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              child: Icon(Icons.add, color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "images/watch2.png",
+                          height: 150,
+                          width: 150,
+                          fit: BoxFit.cover,
+                        ),
+                        Text(
+                          "Apple Watch",
+                          style: AppWidget.semiboldtextfieldStyle(),
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          children: [
+                            Text(
+                              "\$300",
+                              style: TextStyle(
+                                color: Color(0xFFfd6f3e),
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 70),
+                            Container(
+                              padding: EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                 color: Color(0xFFfd6f3e),
                                 borderRadius: BorderRadius.circular(7),
@@ -196,29 +241,29 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.asset(
-                          "images/watch2.png",
+                          "images/laptop3.png",
                           height: 150,
                           width: 150,
                           fit: BoxFit.cover,
                         ),
                         Text(
-                          "Headphone",
+                          "Laptop",
                           style: AppWidget.semiboldtextfieldStyle(),
                         ),
                         SizedBox(height: 5),
                         Row(
                           children: [
                             Text(
-                              "\$100",
+                              "\$1000",
                               style: TextStyle(
                                 color: Color(0xFFfd6f3e),
-                                fontSize: 20.0,
+                                fontSize: 18.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(width: 50),
+                            SizedBox(width: 70),
                             Container(
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                 color: Color(0xFFfd6f3e),
                                 borderRadius: BorderRadius.circular(7),
@@ -242,7 +287,7 @@ class _HomeState extends State<Home> {
 
 class CategoryTile extends StatelessWidget {
   String image;
-  CategoryTile({required this.image});
+  CategoryTile({super.key, required this.image});
   @override
   Widget build(BuildContext context) {
     return Container(
