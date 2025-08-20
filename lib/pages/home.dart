@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppingapp/pages/product_detail.dart';
 import 'package:shoppingapp/widget/support_widget.dart';
 
 class Home extends StatefulWidget {
@@ -148,42 +149,60 @@ class _HomeState extends State<Home> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "images/headphone2.png",
-                          height: 150,
-                          width: 150,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          "Headphone",
-                          style: AppWidget.semiboldtextfieldStyle(),
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Text(
-                              "\$100",
-                              style: TextStyle(
-                                color: Color(0xFFfd6f3e),
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetail(
+                              productName: 'HeadPhones',
+                              productImage: 'images/headphone2.png',
+                              productPrice: 300,
+                              productDetail:
+                                  "Premium over-ear wireless headphones with cushioned ear cups "
+                                  "for comfort and immersive sound. Features Bluetooth connectivity, "
+                                  "sleek black matte design, and 1-year warranty for peace of mind.",
+                            ), // Your detail page
+                          ),
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "images/headphone2.png",
+                            height: 150,
+                            width: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            "Headphone",
+                            style: AppWidget.semiboldtextfieldStyle(),
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            children: [
+                              Text(
+                                "\$100",
+                                style: TextStyle(
+                                  color: Color(0xFFfd6f3e),
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 70),
-                            Container(
-                              padding: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFfd6f3e),
-                                borderRadius: BorderRadius.circular(7),
+                              SizedBox(width: 70),
+                              Container(
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFfd6f3e),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                                child: Icon(Icons.add, color: Colors.white),
                               ),
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -193,42 +212,58 @@ class _HomeState extends State<Home> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "images/watch2.png",
-                          height: 150,
-                          width: 150,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          "Apple Watch",
-                          style: AppWidget.semiboldtextfieldStyle(),
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Text(
-                              "\$300",
-                              style: TextStyle(
-                                color: Color(0xFFfd6f3e),
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetail(
+                              productName: 'Apple Watch',
+                              productImage: 'images/watch2.png',
+                              productPrice: 300,
+                              productDetail:
+                                  'This 4G LTE-enabled Smartwatch is a powerful companion that combines fitness, communication, and entertainment in one device. It supports SIM cards for calls and internet, features popular apps like WhatsApp, YouTube, and Google, and allows seamless shopping with Flipkart, Myntra, and more. With its sleek design and advanced features, it’s perfect for staying connected on the go without needing your phone.',
+                            ), // Your detail page
+                          ),
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "images/watch2.png",
+                            height: 150,
+                            width: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            "Apple Watch",
+                            style: AppWidget.semiboldtextfieldStyle(),
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            children: [
+                              Text(
+                                "\$300",
+                                style: TextStyle(
+                                  color: Color(0xFFfd6f3e),
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 70),
-                            Container(
-                              padding: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFfd6f3e),
-                                borderRadius: BorderRadius.circular(7),
+                              SizedBox(width: 70),
+                              Container(
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFfd6f3e),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                                child: Icon(Icons.add, color: Colors.white),
                               ),
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -237,42 +272,58 @@ class _HomeState extends State<Home> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "images/laptop3.png",
-                          height: 150,
-                          width: 150,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          "Laptop",
-                          style: AppWidget.semiboldtextfieldStyle(),
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Text(
-                              "\$1000",
-                              style: TextStyle(
-                                color: Color(0xFFfd6f3e),
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetail(
+                              productName: 'Lenovo LOQ gaming laptop',
+                              productImage: 'images/laptop3.png',
+                              productPrice: 3000,
+                              productDetail:
+                                  'The Lenovo LOQ gaming laptop delivers powerful performance for gamers and creators alike. It comes bundled with premium accessories including the Lenovo L24i-4A Monitor, M210 Wireless Gaming Mouse, and H110 Gaming Headset. A complete package for immersive gaming and productivity in style.',
+                            ), // Your detail page
+                          ),
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "images/laptop3.png",
+                            height: 150,
+                            width: 150,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            "Laptop",
+                            style: AppWidget.semiboldtextfieldStyle(),
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            children: [
+                              Text(
+                                "\$1000",
+                                style: TextStyle(
+                                  color: Color(0xFFfd6f3e),
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 70),
-                            Container(
-                              padding: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFfd6f3e),
-                                borderRadius: BorderRadius.circular(7),
+                              SizedBox(width: 70),
+                              Container(
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFfd6f3e),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                                child: Icon(Icons.add, color: Colors.white),
                               ),
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

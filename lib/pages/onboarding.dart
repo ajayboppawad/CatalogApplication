@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppingapp/pages/signup.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -16,18 +17,15 @@ class _OnboardingState extends State<Onboarding> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Image - fits half screen
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.6,
-              child: Image.asset("images/mobile.png", fit: BoxFit.cover),
+              child: Image.asset("images/logo.png", fit: BoxFit.contain),
             ),
 
-            // Spacer between image and text
-            const SizedBox(height: 30),
+            SizedBox(height: 30),
 
-            // Text
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "Explore\nThe Best\nProducts",
@@ -39,24 +37,32 @@ class _OnboardingState extends State<Onboarding> {
               ),
             ),
 
-            const Spacer(),
+            Spacer(),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  margin: const EdgeInsets.only(right: 20, bottom: 40),
-                  padding: const EdgeInsets.all(25.0),
-                  decoration: const BoxDecoration(
+                  margin: EdgeInsets.only(right: 20, bottom: 40),
+                  padding: EdgeInsets.all(25.0),
+                  decoration: BoxDecoration(
                     color: Colors.black,
                     shape: BoxShape.circle,
                   ),
-                  child: const Text(
-                    "Next",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Signup()),
+                      );
+                    },
+                    child: Text(
+                      "Next",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

@@ -4,6 +4,7 @@ import 'package:random_string/random_string.dart';
 import 'package:shoppingapp/pages/bottomnav.dart';
 import 'package:shoppingapp/pages/login.dart';
 import 'package:shoppingapp/services/database.dart';
+import 'package:shoppingapp/services/shared_pref.dart';
 import 'package:shoppingapp/widget/support_widget.dart';
 
 class Signup extends StatefulWidget {
@@ -36,6 +37,13 @@ class _SignupState extends State<Signup> {
           ),
         );
         String Id = randomAlphaNumeric(10);
+        await SharedPreferenceHelper().saveUserEmail(emailController.text);
+        await SharedPreferenceHelper().saveUserId(Id);
+        await SharedPreferenceHelper().saveUserName(nameController.text);
+        await SharedPreferenceHelper().saveUserImage(
+          "https://thumbs.dreamstime.com/b/businessman-avatar-illustration-cartoon-user-portrait-profile-icon-simple-business-leader-vector-276189185.jpg",
+        );
+
         Map<String, dynamic> userInfoMap = {
           "name": nameController.text,
           "email": emailController.text,
@@ -94,9 +102,11 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text(
-                  "Please enter the details below to\n                      login.",
-                  style: AppWidget.lighttextfieldStyle(),
+                Center(
+                  child: Text(
+                    "Please enter the details below to\n                      login.",
+                    style: AppWidget.lighttextfieldStyle(),
+                  ),
                 ),
                 SizedBox(height: 20),
                 Text("Name", style: AppWidget.semiboldtextfieldStyle()),

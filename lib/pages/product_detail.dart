@@ -1,51 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:shoppingapp/pages/home.dart';
+import 'package:shoppingapp/pages/order.dart';
+import 'package:shoppingapp/services/local_db.dart';
 import 'package:shoppingapp/widget/support_widget.dart';
 
 class ProductDetail extends StatefulWidget {
-  const ProductDetail({super.key});
+  final String productName;
+  final String productImage;
+  final int productPrice;
+  final String productDetail;
+
+  const ProductDetail({
+    super.key,
+    required this.productName,
+    required this.productImage,
+    required this.productPrice,
+    required this.productDetail,
+  });
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+  void bookNow(BuildContext context) {
+    // Save booking
+    LocalDB.addOrder({
+      "name": widget.productName,
+      "price": widget.productPrice,
+      "image": widget.productImage,
+      "date": DateTime.now().toString(),
+    });
+
+    // Show booking success
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Order placed Successful ✅"),
+        content: Text("${widget.productName} has been ordered successfully."),
+        actions: [
+          TextButton(
+            child: const Text("View Orders"),
+            onPressed: () {
+              Navigator.pop(ctx);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const OrderPage()),
+              );
+            },
+          ),
+          TextButton(
+            child: const Text("OK"),
+            onPressed: () => Navigator.pop(ctx),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFfef5f1),
+      backgroundColor: const Color(0xFFfef5f1),
       body: Container(
-        padding: EdgeInsets.only(top: 50, left: 20),
+        padding: const EdgeInsets.only(top: 50, left: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(left: 20),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Icon(
-                      Icons.arrow_back_ios_new_outlined,
-                      color: Colors.black,
-                    ),
+                // Back Arrow Button
+                Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                        (route) => false,
+                      );
+                    },
+                    child: Icon(Icons.arrow_back, color: Colors.black),
                   ),
                 ),
-                Center(
-                  child: Image.asset("images/headphone2.png", height: 400),
-                ),
+
+                // Product Image
+                Center(child: Image.asset(widget.productImage, height: 400)),
               ],
             ),
+
+            // Product Details
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -53,20 +106,20 @@ class _ProductDetailState extends State<ProductDetail> {
                   ),
                 ),
                 width: MediaQuery.of(context).size.width,
-
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Name + Price
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Headphone",
+                          widget.productName,
                           style: AppWidget.boldtextfieldStyle(),
                         ),
                         Text(
-                          "\$300",
-                          style: TextStyle(
+                          "\$${widget.productPrice}",
+                          style: const TextStyle(
                             color: Color(0xFFfd6f3e),
                             fontSize: 23.0,
                             fontWeight: FontWeight.bold,
@@ -74,27 +127,36 @@ class _ProductDetailState extends State<ProductDetail> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
+
+                    // Details Title
                     Text("Details", style: AppWidget.semiboldtextfieldStyle()),
                     SizedBox(height: 10),
-                    Text(
-                      "Premium over-ear wireless headphones with cushioned ear cups for comfort and immersive sound. Features Bluetooth connectivity, sleek black matte design, and 1-year warranty for peace of mind.",
-                    ),
-                    SizedBox(height: 90),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFfd6f3e),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      child: Center(
-                        child: Text(
-                          "Buy Now",
-                          style: TextStyle(color: Colors.white),
+
+                    // Description
+                    Text(widget.productDetail),
+
+                    const Spacer(),
+
+                    // Buy Now Button
+                    GestureDetector(
+                      onTap: () => bookNow(context),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFfd6f3e),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        child: const Center(
+                          child: Text(
+                            "Buy Now",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                         ),
                       ),
                     ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

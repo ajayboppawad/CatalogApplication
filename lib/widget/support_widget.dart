@@ -24,4 +24,6 @@ class AppWidget {
       fontWeight: FontWeight.bold,
     );
   }
+
+  
 }
