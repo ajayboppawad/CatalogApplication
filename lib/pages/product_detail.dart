@@ -63,7 +63,7 @@ class _ProductDetailState extends State<ProductDetail> {
     return Scaffold(
       backgroundColor: const Color(0xFFfef5f1),
       body: Container(
-        padding: const EdgeInsets.only(top: 50, left: 20),
+        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -71,18 +71,17 @@ class _ProductDetailState extends State<ProductDetail> {
               children: [
                 // Back Arrow Button
                 Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  padding: const EdgeInsets.all(10),
+                  margin: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushAndRemoveUntil(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Home()),
-                        (route) => false,
                       );
                     },
                     child: Icon(Icons.arrow_back, color: Colors.black),
@@ -97,7 +96,7 @@ class _ProductDetailState extends State<ProductDetail> {
             // Product Details
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

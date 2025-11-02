@@ -12,6 +12,7 @@ class OrderPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: Text("My Orders")),
         backgroundColor: Colors.orange,
+        automaticallyImplyLeading: false,
       ),
       body: orders.isEmpty
           ? Center(child: Text("No orders yet."))

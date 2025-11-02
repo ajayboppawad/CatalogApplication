@@ -94,7 +94,7 @@ class _SignupState extends State<Signup> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset("images/login.png"),
+                Image.asset("images/sign.png"),
                 Center(
                   child: Text(
                     "Sign Up",
